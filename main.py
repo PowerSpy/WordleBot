@@ -21,9 +21,10 @@ def main():
         guesses = []
         user = input("Enter Locked Values (green): ")
         user_guess = input("Enter string of letters (yellow): ")
+        excluded = input("Enter string of excluded words (gray): ")
         if user == "exit":
             break
-        elif user == "_____" and user_guess == None:
+        elif user == "_____" and user_guess == None and excluded == None:
             fill_answers(answers)
             fill_guesses(valid_words)
         if len(user) == 5:
@@ -37,6 +38,7 @@ def main():
         for word in valid_words:
             locked = True
             unlocked = True
+            exclude = True
             for key, val in let_dic.items():
                 if word[key] != val:
                     locked = False
@@ -49,11 +51,16 @@ def main():
                         unlocked = False
                         break
             if locked and unlocked:
+                for l in excluded:
+                    if l in word:
+                        exclude = False
+            if locked and unlocked and exclude:
                 valids.append(word)
         fill_guesses(valids)
         for word in answers:
             locked = True
             unlocked = True
+            exclude = True
             for key, val in let_dic.items():
                 if word[key] != val:
                     locked = False
@@ -66,6 +73,10 @@ def main():
                         unlocked = False
                         break
             if locked and unlocked:
+                for l in excluded:
+                    if l in word:
+                        exclude = False
+            if locked and unlocked and exclude:
                 guesses.append(word)
         fill_answers(guesses)
                         
