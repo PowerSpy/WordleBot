@@ -78,6 +78,7 @@ def sort_words_by_entropy(possible_words, possible_answers):
 def main():
     excluded = ""
     let_dic = {}
+    green = "-----"
     while True:
         letters = []
         valids = []
@@ -85,6 +86,8 @@ def main():
         excluded_positions = {}  # Store the positions where yellow letters cannot be
         
         user = input("Enter Locked Values (green): ")
+        green = "".join(c1 if c1.isalpha() else c2 for c1, c2 in zip(green, user))
+        print("New Green:", green)
         user_guess = input("Enter string of letters (yellow): ")
         excluded += input("Enter string of excluded words (gray): ")
         excluded = "".join(set(excluded))
@@ -105,15 +108,15 @@ def main():
         if user == "restart":
             excluded = ""
             let_dic = {}
-            continue
-        elif user == "_____" and user_guess == None and excluded == None:
+            break
+        elif green == "-----" and user_guess == None and excluded == None:
             # Write the full list of answers and guesses
             fill_answers(answers)
             fill_guesses(valid_words)
         
-        if len(user) == 5:
-            for i, l in enumerate(user):
-                if l != "_":
+        if len(green) == 5:
+            for i, l in enumerate(green):
+                if l != "-":
                     let_dic[i] = l
         if user_guess != None:
             for l in user_guess:
@@ -193,4 +196,5 @@ def main():
         sorted_guesses = sort_words_by_entropy(guesses, answers)
         fill_answers(sorted_guesses)
 
-main()
+while True:
+    main()
