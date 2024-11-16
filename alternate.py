@@ -86,13 +86,13 @@ def main():
         excluded_positions = {}  # Store the positions where yellow letters cannot be
         
         user = input("Enter Locked Values (green): ")
+        if user == "restart" or user == "exit":
+            break
+        if user == "":
+            user = "-----"
         green = "".join(c1 if c1.isalpha() else c2 for c1, c2 in zip(green, user))
         print("New Green:", green)
         user_guess = input("Enter string of letters (yellow): ")
-        excluded += input("Enter string of excluded words (gray): ")
-        excluded = "".join(set(excluded))
-        
-        # Input for yellow letter positions
         num_yellow = len(user_guess)
         for i in range(num_yellow):
             yellow_letters = user_guess[i]
@@ -102,14 +102,12 @@ def main():
                 
                 # Store the forbidden positions for the yellow letter
                 excluded_positions[yellow_letter] = forbidden_positions
+        excluded += input("Enter string of excluded words (gray): ")
+        excluded = "".join(set(excluded))
         
-        if user == "exit":
-            break
-        if user == "restart":
-            excluded = ""
-            let_dic = {}
-            break
-        elif green == "-----" and user_guess == None and excluded == None:
+        
+        
+        if green == "-----" and user_guess == None and excluded == None:
             # Write the full list of answers and guesses
             fill_answers(answers)
             fill_guesses(valid_words)
