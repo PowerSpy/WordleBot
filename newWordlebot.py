@@ -391,7 +391,7 @@ def solve_wordle(answer, answers, initial_guess = "crane", cache_file="feedback_
             pass
         cache_key = f"{guessed_word}-{info}"
         print(sorted_valid_answers)
-        if guesses < 2 and cache_key in cache:
+        if cache_key in cache:
             guessed_word = cache[cache_key]
             continue
         for ind, (c, i) in enumerate(zip(guessed_word, info)):

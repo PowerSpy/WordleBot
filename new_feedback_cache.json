@@ -1,0 +1,20 @@
+{
+    "crane-00000": {
+        "word-info": {}
+    },
+    "crane-02200": {
+        "word-info": {
+            "trail-22200": {}
+        }
+    },
+    "trail-22200": {
+        "word-info": {
+            "trash-22200": {}
+        }
+    },
+    "trash-22200": {
+        "word-info": {
+            "tramp-22222": {}
+        }
+    }
+}
