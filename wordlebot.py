@@ -357,7 +357,7 @@ def generate_feedback_cache(starting_words, answers):
 
 
 
-def solve_wordle(answer, answers, initial_guess = "crane", cache_file="feedback_cache.json"):
+def solve_wordle(answer, answers, initial_guess = "crane", prints = True, cache_file="feedback_cache.json"):
     try:
         with open(cache_file, 'r') as f:
             cache = json.load(f)
@@ -381,7 +381,8 @@ def solve_wordle(answer, answers, initial_guess = "crane", cache_file="feedback_
         # (ex: 02001, 0 = gray, 1 = yellow, 2 = green)
         info = get_feedback(guessed_word, answer)
         guesses += 1
-        print(guessed_word)
+        if prints:
+            print(guessed_word)
         # print(info)
         if guessed_word == answer:
             return guesses
@@ -390,7 +391,6 @@ def solve_wordle(answer, answers, initial_guess = "crane", cache_file="feedback_
         except:
             pass
         cache_key = f"{guessed_word}-{info}"
-        print(sorted_valid_answers)
         if guesses < 2 and cache_key in cache:
             guessed_word = cache[cache_key]
             continue
@@ -460,7 +460,6 @@ def solve_wordle(answer, answers, initial_guess = "crane", cache_file="feedback_
                     valid_answers.append(word)
         
         # Sort the possible answers by entropy before saving
-        print(sorted_valid_answers)
         sorted_valid_answers = sort_words_by_entropy(valid_answers, answers)
         guessed_word = sorted_valid_answers[0]
 
@@ -468,7 +467,7 @@ def solve_wordle(answer, answers, initial_guess = "crane", cache_file="feedback_
 
 if __name__ == "__main__":
     valid_words, answers = load_words()
-    print(solve_wordle("tramp", answers, "crane"))
-    # while True:
-    #     main()
+    # print(solve_wordle("tramp", answers, "crane"))
+    while True:
+        main()
     

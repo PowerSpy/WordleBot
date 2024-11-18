@@ -147,11 +147,11 @@ if __name__ == "__main__":
     # best_guesses = sort_guesses_by_entropy(answers, answers, feedback_dict)
 
     # print(f"Best first guess: {best_guesses}")
-    print(solve_wordle("alert", answers))
+    # print(solve_wordle("alert", answers))
     # print(get_feedback("beset","exist"))
-    # while True:
-    #     first_guess = input("Start guess: ")
-    #     if len(first_guess) != 5:
-    #         first_guess = "crane"
-    #     main(answers, first_guess)
+    while True:
+        first_guess = input("Start guess: ")
+        if len(first_guess) != 5:
+            first_guess = "crane"
+        main(answers, first_guess)
     # solve_wordle("exist", answers)

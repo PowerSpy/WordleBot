@@ -39,7 +39,8 @@ def tester(sample_size=2315, starting_words=None):
             for answer in test_answers:
                 print("Answer, Starting:", answer, starting_word)
                 # Solve using wordlebot.solve_wordle
-                wordlebot_guesses = solve_wordle(answer, test_answers, starting_word, prints = False)
+                # wordlebot_guesses = solve_wordle(answer, test_answers, starting_word, prints = False)
+                wordlebot_guesses = 10
                 wordlebot_total_guesses += wordlebot_guesses
                 wordlebot_max = max(wordlebot_guesses, wordlebot_max)
                 wordlebot_total += 1
@@ -74,4 +75,4 @@ def tester(sample_size=2315, starting_words=None):
 
 if __name__ == "__main__":
     
-    tester(2315, ["crane", "soare", "tarse", "tares", "stare"])
+    tester(2315, ["slant", "trace", "carte", "salet", "crate"])
