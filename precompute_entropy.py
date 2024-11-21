@@ -151,8 +151,8 @@ if __name__ == "__main__":
     # print(solve_wordle("alert", answers))
     # print(get_feedback("beset","exist"))
     # while True:
-    #     first_guess = input("Start guess: ")
-    #     if len(first_guess) != 5:
-    #         first_guess = "crane"
-    #     main(answers, first_guess)
-    solve_wordle("watch", answers, "stare")
+        first_guess = input("Start guess: ")
+        if len(first_guess) != 5:
+            first_guess = "crane"
+        main(answers, first_guess)
+    # solve_wordle("watch", answers, "stare")
