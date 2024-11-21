@@ -13,8 +13,7 @@ def tester(sample_size=2315, starting_words=None):
         starting_words = ["crane"]
 
     # Select a random sample of answers
-    test_answers = random.sample(answers, sample_size)
-    print(len(test_answers))
+    test_answers = answers
 
     # Open the file for appending results
     with open("comparison_results.txt", "w") as file:
@@ -23,7 +22,7 @@ def tester(sample_size=2315, starting_words=None):
     # Initialize tqdm progress bar
     with tqdm(total=sample_size * len(starting_words), desc="Testing Wordle Solver", unit="game") as pbar:
         for starting_word in starting_words:
-            print(f"\nTesting with starting word: {starting_word}")
+            # print(f"\nTesting with starting word: {starting_word}")
             
             # Initialize per-word statistics
             wordlebot_total_guesses = 0
@@ -37,10 +36,9 @@ def tester(sample_size=2315, starting_words=None):
             results = []
 
             for answer in test_answers:
-                print("Answer, Starting:", answer, starting_word)
+                # print("Answer, Starting:", answer, starting_word)
                 # Solve using wordlebot.solve_wordle
-                # wordlebot_guesses = solve_wordle(answer, test_answers, starting_word, prints = False)
-                wordlebot_guesses = 10
+                wordlebot_guesses = 10 #solve_wordle(answer, test_answers, starting_word, prints = False)
                 wordlebot_total_guesses += wordlebot_guesses
                 wordlebot_max = max(wordlebot_guesses, wordlebot_max)
                 wordlebot_total += 1
@@ -75,4 +73,4 @@ def tester(sample_size=2315, starting_words=None):
 
 if __name__ == "__main__":
     
-    tester(2315, ["slant", "trace", "carte", "salet", "crate"])
+    tester(starting_words=["stare", "crane", "slate", "trace"])

@@ -87,13 +87,14 @@ def solve_wordle(answer, answers, initial_guess = "crane", prints = True):
     while True:
         feedback_dict = precompute_feedback_patterns(guesses, answers)
         best_guesses = sort_guesses_by_entropy(guesses, answers, feedback_dict)
+        guess = best_guesses[0][0]
         if prints:
             print(guess)
-        guess = best_guesses[0][0]
-        # print(guess)
         info = get_feedback(guess, answer)
         guess_count += 1
         if info == "22222":
+            if prints:
+                print(f"Solved with {guess_count} guesses")
             return guess_count
         guesses = feedback_dict[guess][info]
         answers = feedback_dict[guess][info]
@@ -149,9 +150,9 @@ if __name__ == "__main__":
     # print(f"Best first guess: {best_guesses}")
     # print(solve_wordle("alert", answers))
     # print(get_feedback("beset","exist"))
-    while True:
-        first_guess = input("Start guess: ")
-        if len(first_guess) != 5:
-            first_guess = "crane"
-        main(answers, first_guess)
-    # solve_wordle("exist", answers)
+    # while True:
+    #     first_guess = input("Start guess: ")
+    #     if len(first_guess) != 5:
+    #         first_guess = "crane"
+    #     main(answers, first_guess)
+    solve_wordle("watch", answers, "stare")
