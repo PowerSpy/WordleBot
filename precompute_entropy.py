@@ -150,7 +150,7 @@ if __name__ == "__main__":
     # print(f"Best first guess: {best_guesses}")
     # print(solve_wordle("alert", answers))
     # print(get_feedback("beset","exist"))
-    # while True:
+    while True:
         first_guess = input("Start guess: ")
         if len(first_guess) != 5:
             first_guess = "crane"
