@@ -468,7 +468,7 @@ def solve_wordle(answer, answers, initial_guess = "crane", cache_file="feedback_
 
 if __name__ == "__main__":
     valid_words, answers = load_words()
-    print(solve_wordle("tramp", answers, "crane"))
-    # while True:
-    #     main()
+    # print(solve_wordle("tramp", answers, "crane"))
+    while True:
+        main()
     

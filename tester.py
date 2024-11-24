@@ -1,7 +1,7 @@
 import random
-from wordlebot import load_words, solve_wordle
+from badwordlebot import load_words, solve_wordle
 from tqdm import tqdm
-import precompute_entropy
+import main
 
 def tester(sample_size=2315, starting_words=None):
     # Load words and answers
@@ -44,7 +44,7 @@ def tester(sample_size=2315, starting_words=None):
                 wordlebot_total += 1
 
                 # Solve using precompute_entropy.solve_wordle
-                precompute_guesses = precompute_entropy.solve_wordle(answer, test_answers, starting_word, prints = False)
+                precompute_guesses = main.solve_wordle(answer, test_answers, starting_word, prints = False)
                 precompute_total_guesses += precompute_guesses
                 precompute_max = max(precompute_guesses, precompute_max)
                 precompute_total += 1
